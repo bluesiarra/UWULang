@@ -6,11 +6,13 @@ public class UWUSourceCode {
      * heapSpace -> main memory
      * readLine -> command the interpreter is executing
      * memLoc -> where read and write will do their thing
+     * debugMode -> toggles debug mode 
      */
     private static int[] heapSpace = new int[8];
     private static int readLine=0;
     private static int memLoc=0;
     private static boolean debugMode = true;
+    //cleans up index errors
     public static int clamp(int val, int min, int max)
     {
         if (val > max)
