@@ -19,7 +19,18 @@ public class UWUSourceCode {
         //command execution
         switch(expression){
             case "UWU":
-                memLoc = (memLoc + 1)%(heapSpace.length);
+                memLoc++;
+                if (memLoc >= heapSpace.length)
+                {
+                    memLoc = 0;
+                }
+                break;
+            case "UwU":
+                memLoc--;
+                if (memLoc < 0)
+                {
+                    memLoc = heapSpace.length - 1;
+                }
                 break;
             default:
                 System.out.println("\033[1m\033[31mError\033[0m\033[0m: Command not found error on token: "+ expression);
