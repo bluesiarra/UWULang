@@ -11,7 +11,7 @@ public class UWUSourceCode {
                 System.out.println("jacob is short!!!");
                 break;
             default:
-                System.out.println("\033[1m\033[31mError\033[0m\033[0m: Syntax error on token: "+expression);
+                System.out.println("\033[1m\033[31mError\033[0m\033[0m: Command not found error on token: "+ expression);
                 return 1;
         }
         return 0;
