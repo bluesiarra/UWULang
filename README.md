@@ -1,6 +1,3 @@
-DEEZ NUTS!!!!
+UWULANG 
 
-welcome to uwulang
-
-we worship the uwu
-
+A programming esolanguage oriented around the word UWU and its variations.
