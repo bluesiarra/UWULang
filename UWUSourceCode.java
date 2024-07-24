@@ -7,7 +7,7 @@ public class UWUSourceCode {
      * readLine -> command the interpreter is executing
      * memLoc -> where read and write will do their thing
      */
-    private static int[] heapSpace = new int[64];
+    private static int[] heapSpace = new int[8];
     private static int readLine=0;
     private static int memLoc=0;
     public static int evalExp(String expression){
