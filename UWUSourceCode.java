@@ -53,7 +53,13 @@ public class UWUSourceCode {
             fileIn.close();
             for (readLine=0; readLine<commands.size(); readLine++){
                 //runs commands
-                evalExp(commands.get(readLine));
+                //errorCode checks if the execution runs into errors 
+                //1 -> error!
+                //0 -> no error can continue execution
+                int errorCode = evalExp(commands.get(readLine));
+                if (errorCode==1){
+                    break;
+                }
             }
         }catch (IOException e){
             //if the file that we want to run doesn't exist, we throw an error.
