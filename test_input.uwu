@@ -1,1 +1,9 @@
-jacobisshort ~just ~a ~test ~comment! jacobisnotshort ~thisshouldprint ~jacobisshort ~andthenitwillraiseerror.
+UWU ~moveto[1]
+uwu ~add1
+uwu ~add1
+UwU ~moveto[0]
+uwu ~add1
+uWu ~subtract1
+UWU ~moveto[1]
+uWu ~subtract1
+~final0,1,0,0,0,0,0,0

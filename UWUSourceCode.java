@@ -10,6 +10,20 @@ public class UWUSourceCode {
     private static int[] heapSpace = new int[8];
     private static int readLine=0;
     private static int memLoc=0;
+    private static boolean debugMode = true;
+    public static int clamp(int val, int min, int max)
+    {
+        if (val > max)
+        {
+            val = min;
+        }
+        if (val < min)
+        {
+            val = max;
+        }
+
+        return val;
+    }
     public static int evalExp(String expression){
         //commenting
         if (expression.charAt(0)=='~'){
@@ -17,12 +31,31 @@ public class UWUSourceCode {
         }
         //command execution
         switch(expression){
-            case "jacobisshort":
-                System.out.println("jacob is short!!!");
+            case "UWU":
+                memLoc = clamp(memLoc + 1, 0, heapSpace.length-1);
+                break;
+            case "UwU":
+                memLoc = clamp(memLoc - 1, 0, heapSpace.length-1);
+                break;
+            case "uwu":
+                heapSpace[memLoc] = clamp(heapSpace[memLoc] + 1, 0, 127);
+                break;
+            case "uWu":
+                heapSpace[memLoc] = clamp(heapSpace[memLoc] - 1, 0, 127);
                 break;
             default:
                 System.out.println("\033[1m\033[31mError\033[0m\033[0m: Command not found error on token: "+ expression);
                 return 1;
+        }
+
+        if (debugMode)
+        {
+            System.out.print("<Debug statement for input:"+expression+"> memLoc: " + memLoc + ", heap: ");
+            for (int num : heapSpace)
+            {
+                System.out.print(" " + num);
+            }
+            System.out.println();
         }
         return 0;
     }
