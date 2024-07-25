@@ -8,6 +8,7 @@ public class UWUSourceCode {
      * memLoc -> where read and write will do their thing
      * debugMode -> toggles debug mode 
      * stdin -> standard input scanner
+     * commands -> all read commands
      */
     private static int[] heapSpace = new int[8];
     private static int readLine=0;
@@ -103,7 +104,6 @@ public class UWUSourceCode {
             System.out.print("Enter file name to be read from > ");
             filename = stdin.nextLine();
         }
-        //code to be executed
         try{
             //initializes file reader
             File readInput = new File(filename);
