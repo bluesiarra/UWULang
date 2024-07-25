@@ -120,11 +120,15 @@ public class UWUSourceCode {
             for (readLine=0; readLine<commands.size(); readLine++){
                 //runs commands
                 //errorCode checks if the execution runs into errors 
+                //2 -> unclosed loop error!
                 //1 -> error!
                 //0 -> no error can continue execution
                 int errorCode = evalExp(commands.get(readLine));
                 if (errorCode==1){
                     break;
+                }
+                if (errorCode==2){
+                    System.out.println("\033[1m\033[31mError\033[0m\033[0m: Unopened loop closer: "+commands.get(readLine));
                 }
             }
         }catch (IOException e){
