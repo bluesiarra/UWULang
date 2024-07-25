@@ -12,8 +12,9 @@ public class UWUSourceCode {
     private static int[] heapSpace = new int[8];
     private static int readLine=0;
     private static int memLoc=0;
-    private static boolean debugMode = true;
+    private static boolean debugMode = false;
     private static Scanner stdin = new Scanner(System.in);
+    private static ArrayList<String> commands = new ArrayList<String>();
     //cleans up index errors
     public static int clamp(int val, int min, int max)
     {
@@ -59,6 +60,20 @@ public class UWUSourceCode {
             case "Uwu":
                 System.out.printf("%c",heapSpace[memLoc]);
                 break;
+            case "owo":
+                int loopStart=readLine+1;
+                readLine++;
+                while (heapSpace[memLoc]!=0){
+                    int returnCode = evalExp(commands.get(readLine));
+                    if (returnCode==2){
+                        readLine=loopStart;
+                    }else{
+                        readLine++;
+                    }
+                }
+                break;
+            case "OWO":
+                return 2;
             default:
                 System.out.println("\033[1m\033[31mError\033[0m\033[0m: Command not found error on token: "+ expression);
                 return 1;
@@ -85,7 +100,6 @@ public class UWUSourceCode {
             filename = stdin.nextLine();
         }
         //code to be executed
-        ArrayList<String> commands = new ArrayList<String>();
         try{
             //initializes file reader
             File readInput = new File(filename);
