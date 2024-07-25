@@ -7,11 +7,13 @@ public class UWUSourceCode {
      * readLine -> command the interpreter is executing
      * memLoc -> where read and write will do their thing
      * debugMode -> toggles debug mode 
+     * stdin -> standard input scanner
      */
     private static int[] heapSpace = new int[8];
     private static int readLine=0;
     private static int memLoc=0;
     private static boolean debugMode = true;
+    private static Scanner stdin = new Scanner(System.in);
     //cleans up index errors
     public static int clamp(int val, int min, int max)
     {
@@ -45,6 +47,12 @@ public class UWUSourceCode {
             case "uWu":
                 heapSpace[memLoc] = clamp(heapSpace[memLoc] - 1, 0, 127);
                 break;
+            case "uWU":
+                heapSpace[memLoc]=stdin.nextInt();
+                break;
+            case "uwU":
+                heapSpace[memLoc]=stdin.next().charAt(0);
+                break;
             default:
                 System.out.println("\033[1m\033[31mError\033[0m\033[0m: Command not found error on token: "+ expression);
                 return 1;
@@ -62,9 +70,6 @@ public class UWUSourceCode {
         return 0;
     }
     public static void main(String[] args){
-        
-        //standard input scanner
-        Scanner stdin = new Scanner(System.in);
         String filename;
         //if you provided an argument for the interpreter, runs that file, else prompts for another file
         try{
