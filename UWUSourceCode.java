@@ -1,7 +1,7 @@
-import java.io.*;
+import java.io.*; 
 import java.util.*;
 public class UWUSourceCode {
-    //best interpreter guys
+    //best interpreter guys real
     /*
      * heapSpace -> main memory
      * readLine -> command the interpreter is executing
