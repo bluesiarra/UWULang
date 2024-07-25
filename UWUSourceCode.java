@@ -130,10 +130,6 @@ public class UWUSourceCode {
                 if (errorCode==1){
                     break;
                 }
-                if (errorCode==2){
-                    System.out.println("\033[1m\033[31mError\033[0m\033[0m: Unopened loop closer: "+commands.get(readLine));
-                    break;
-                }
                 if (errorCode==3){
                     System.out.println("\033[1m\033[31mError\033[0m\033[0m: Unclosed loop opener");
                 }
