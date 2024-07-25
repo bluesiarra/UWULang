@@ -135,7 +135,7 @@ public class UWUSourceCode {
                     break;
                 }
                 if (errorCode==3){
-                    System.out.println("\033[1m\033[31mError\033[0m\033[0m: Unclosed loop opener: "+commands.get(readLine));
+                    System.out.println("\033[1m\033[31mError\033[0m\033[0m: Unclosed loop opener");
                 }
             }
         }catch (IOException e){
