@@ -55,7 +55,7 @@ public class UWUSourceCode {
                 heapSpace[memLoc]=stdin.next().charAt(0);
                 break;
             case "UWu":
-                System.out.println(heapSpace[memLoc]);
+                System.out.print(heapSpace[memLoc]);
                 break;
             case "Uwu":
                 System.out.printf("%c",heapSpace[memLoc]);
