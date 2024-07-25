@@ -1,7 +1,7 @@
-import java.io.*;
+import java.io.*; 
 import java.util.*;
 public class UWUSourceCode {
-    //best interpreter guys
+    //best interpreter guys real
     /*
      * heapSpace -> main memory
      * readLine -> command the interpreter is executing
@@ -14,6 +14,10 @@ public class UWUSourceCode {
     private static int memLoc=0;
     private static boolean debugMode = true;
     private static Scanner stdin = new Scanner(System.in);
+    private static int nextLoopEnd=-1;
+    private static int prevLoopStart=-1;
+    private static ArrayList<String> commands = new ArrayList<String>();
+
     //cleans up index errors
     public static int clamp(int val, int min, int max)
     {
@@ -28,10 +32,19 @@ public class UWUSourceCode {
 
         return val;
     }
-    public static int evalExp(String expression){
+    public static int evalExp(String expression, int index){
         //commenting
         if (expression.charAt(0)=='~'){
-            return 0;
+            return index+1;
+        }
+        if (debugMode)
+        {
+            System.out.print("<Debug statement for input:"+expression+"> memLoc: " + memLoc + ", heap: ");
+            for (int num : heapSpace)
+            {
+                System.out.print(" " + num);
+            }
+            System.out.println();
         }
         //command execution
         switch(expression){
@@ -53,21 +66,38 @@ public class UWUSourceCode {
             case "uwU":
                 heapSpace[memLoc]=stdin.next().charAt(0);
                 break;
+            case "owo":
+                prevLoopStart = index;
+                if (heapSpace[memLoc] == 0)
+                {
+                    if (nextLoopEnd < index)
+                    {
+                        //search for next OWO
+                        for (int i = index; i < commands.size(); i++)
+                        {
+                            if (commands.get(i).equals("OWO"))
+                            {
+                                nextLoopEnd = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    index = nextLoopEnd + 1;
+                
+                }
+                return index;
+            case "OWO":
+                index = prevLoopStart;
+                return index;
             default:
                 System.out.println("\033[1m\033[31mError\033[0m\033[0m: Command not found error on token: "+ expression);
-                return 1;
+                return -1;
+        
         }
 
-        if (debugMode)
-        {
-            System.out.print("<Debug statement for input:"+expression+"> memLoc: " + memLoc + ", heap: ");
-            for (int num : heapSpace)
-            {
-                System.out.print(" " + num);
-            }
-            System.out.println();
-        }
-        return 0;
+
+        return (index+1);
     }
     public static void main(String[] args){
         String filename;
@@ -79,7 +109,6 @@ public class UWUSourceCode {
             filename = stdin.nextLine();
         }
         //code to be executed
-        ArrayList<String> commands = new ArrayList<String>();
         try{
             //initializes file reader
             File readInput = new File(filename);
@@ -91,15 +120,18 @@ public class UWUSourceCode {
             }
             //closes read input (whole thing has been read)
             fileIn.close();
-            for (readLine=0; readLine<commands.size(); readLine++){
+            int readLine = 0;
+            System.out.println("commands size: " + commands.size());
+            while (readLine<commands.size()){
                 //runs commands
                 //errorCode checks if the execution runs into errors 
                 //1 -> error!
                 //0 -> no error can continue execution
-                int errorCode = evalExp(commands.get(readLine));
-                if (errorCode==1){
+                readLine = evalExp(commands.get(readLine), readLine);
+                if (readLine==-1){
                     break;
                 }
+                System.out.println("Current index: " + readLine);
             }
         }catch (IOException e){
             //if the file that we want to run doesn't exist, we throw an error.
