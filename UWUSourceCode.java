@@ -79,6 +79,10 @@ public class UWUSourceCode {
                             return 3;
                         }
                     }
+                }else{
+                    while (!commands.get(readLine).equals("OWO") && readLine<commands.size()-1){
+                        readLine++;
+                    }
                 }
                 break;
             case "OWO":
