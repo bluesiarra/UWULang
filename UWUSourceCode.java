@@ -53,6 +53,12 @@ public class UWUSourceCode {
             case "uwU":
                 heapSpace[memLoc]=stdin.next().charAt(0);
                 break;
+            case "UWu":
+                System.out.println(heapSpace[memLoc]);
+                break;
+            case "Uwu":
+                System.out.printf("%c",heapSpace[memLoc]);
+                break;
             default:
                 System.out.println("\033[1m\033[31mError\033[0m\033[0m: Command not found error on token: "+ expression);
                 return 1;
