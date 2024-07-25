@@ -63,10 +63,14 @@ public class UWUSourceCode {
             case "owo":
                 int loopStart=readLine+1;
                 readLine++;
-                while (heapSpace[memLoc]!=0){
+                while (true){
                     int returnCode = evalExp(commands.get(readLine));
                     if (returnCode==2){
-                        readLine=loopStart;
+                        if (heapSpace[memLoc]==0){
+                            break;
+                        }else{
+                            readLine=loopStart;
+                        }
                     }else{
                         readLine++;
                     }
