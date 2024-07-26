@@ -64,17 +64,26 @@ public class UWUSourceCode {
             case "owo":
                 int loopStart=readLine+1;
                 readLine++;
-                while (true){
-                    int returnCode = evalExp(commands.get(readLine));
-                    if (returnCode==2){
-                        if (heapSpace[memLoc]==0){
-                            break;
+                if (heapSpace[memLoc]!=0){
+                    while (true){
+                        int returnCode = evalExp(commands.get(readLine));
+                        if (returnCode==2){
+                            if (heapSpace[memLoc]==0){
+                                break;
+                            }else{
+                                readLine=loopStart;
+                            }
+                        }else if (readLine<commands.size()-1){
+                            readLine++;
                         }else{
-                            readLine=loopStart;
+                            return 3;
                         }
-                    }else{
+                    }
+                }else{
+                    while (!commands.get(readLine).equals("OWO") && readLine<commands.size()-1){
                         readLine++;
                     }
+                    readLine++;
                 }
                 break;
             case "OWO":
@@ -118,11 +127,16 @@ public class UWUSourceCode {
             for (readLine=0; readLine<commands.size(); readLine++){
                 //runs commands
                 //errorCode checks if the execution runs into errors 
+                //3 -> unclosed loop error!
+                //2 -> unopened loop error!
                 //1 -> error!
                 //0 -> no error can continue execution
                 int errorCode = evalExp(commands.get(readLine));
                 if (errorCode==1){
                     break;
+                }
+                if (errorCode==3){
+                    System.out.println("\033[1m\033[31mError\033[0m\033[0m: Unclosed loop opener");
                 }
             }
         }catch (IOException e){
